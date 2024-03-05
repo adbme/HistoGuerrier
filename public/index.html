@@ -1,150 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-r.css' rel='stylesheet'>
     <style>
-body {
-    background-color: #060809;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-}
+        * {
+            transition: 0.3s;
+        }
 
-header {
-    color: white;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    font-family: "Almendra", serif;
-    font-weight: 400;
-    font-style: normal;
-}
+        body {
+            background-color: #060809;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
 
-header img {
-    max-width: 100px;
-    height: auto;
-}
+        header {
+            color: white;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            font-family: "Almendra", serif;
 
-header .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-right: 40%;
-}
 
-/* Ajout de la bordure centrée pour le titre */
-header h1 {
-    font-size: 24px;
-    margin: 0;
-    border-top: 2px solid white; /* Bordure en haut */
-    border-bottom: 2px solid white; /* Bordure en bas */
-    padding: 10px 20px; /* Espace autour du texte */
-}
 
-main {
-    background-image: url('images/body.png');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.531);
-}
+        }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    color: white;
-    margin-top: auto;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
+        header img {
+            max-width: 180px;
+            height: auto;
 
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        }
 
-#file {
-    display: none;
-}
+        header h1 {
+            background-color: #060809;
+            padding: 10px;
 
-.file-style {
-    font-family: 'Trebuchet MS';
-    width: 520px;
-    display: block;
-    height: 130px;
-    margin: auto;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    border-radius: 15px;
-    border: 2px dashed #cdc8c890;
-    font-size: 10px;
-}
+        }
 
-.btn {
-    flex: 1 1 auto;
-    padding: 10px 40px 10px 40px;
-    text-align: center;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: black;
-    border-radius: 3px;
-    font-size: 10px;
-    transition: 0.3s;
-}
+        header h3 {
+            color: rgba(255, 255, 255, 0.817);
+        }
 
-.btn-1 {
-    transition: 0.3s;
-    background-image: linear-gradient(to left, #f6d365 , #fd8585, #f6d365 );
-}
+        header img:hover {
+            transform: scale(1.3);
+        }
 
+        header .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+        }
+
+        main {
+
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.531);
+            flex-direction: column
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: white;
+            margin-top: auto;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #file {
+            display: none;
+        }
+
+        .file-container {
+            position: relative;
+        }
+
+        .file-style {
+            font-family: 'Trebuchet MS';
+            width: 520px;
+            display: block;
+            height: 130px;
+            margin: auto;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            border-radius: 15px;
+            border: 2px dashed #cdc8c890;
+            font-size: 10px;
+            transition: width 1s;
+
+        }
+
+        .file-style:hover {
+            color: rgba(var(--text-color));
+            border: 2px double transparent;
+            background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            width: 200px;
+        }
+
+        .btn {
+            flex: 1 1 auto;
+            padding: 10px 40px 10px 40px;
+            text-align: center;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: black;
+            border-radius: 3px;
+            font-size: 10px;
+
+        }
+
+        .btn-1 {
+
+            background-image: linear-gradient(to left, #f6d365, #fd8585, #f6d365);
+        }
+
+        hr {
+            margin-bottom: -50px;
+        }
+
+        .div {
+            width: 33%;
+
+            height: 180px;
+        }
+
+        .menuDiv {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 40px;
+        }
+
+        #output {
+            margin-top: 20px;
+            width: 300px;
+            /* Adjust the width as needed */
+            height: auto;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .iconSize {
+            width: 30px;
+            margin: 15px;
+
+        }
     </style>
 </head>
+
 <body>
 
-
     <header>
-        <img src="images/logo.svg" alt="Logo">
-        <div class="content"><h1>HistoGuerrier</h1>
-        <p>Identifiez et Découvrez les Guerriers du Monde Ancien</p></div>
-        
-    </header>
-    <main class="image">
-       
-        <label for="file" class="file-style">
-            <img src="images/upload.svg" width="50" >
-            <p>Drag and Drop here</p>
-            <p style="margin-bottom: 20px;">or</p>
-            <a  class="btn btn-1">Select file</a>
-           </label>
-           <input type="file" id="file">
+        <div class="div logoDiv"><img src="images/logo.svg" alt="Logo"></div>
 
+        <div class="div content">
+
+            <hr width="500px" color="white" />
+            <h1>HistoGuerrier</h1>
+            <div class="flex">
+                <img class="iconSize" src="images/greek-pillars.png" alt="">
+                <h3>Identifiez et Découvrez les Guerriers du Monde Ancien </h3>
+                <img class="iconSize" src="images/wreath.png" alt="">
+            </div>
+
+
+        </div>
+        <div class="div menuDiv">
+            <i class="gg-menu"></i>
+        </div>
+    </header>
+    <main>
+
+        <i id="clearButton" style="display: none; cursor: pointer;" onclick="removeImage()" class="gg-close-r"></i>
+        <img id="output" />
+        <div id="file-info" style="display: none; color: white; text-align: right;">
+            <p id="file-name"></p>
+            <p id="file-size"></p>
+        </div>
+        <div id="file-container" class="file-container">
+
+
+
+            <label for="file" class="file-style btn-gradient-border btn-glow">
+                <img src="images/upload.svg" width="50">
+                <p>Drag and Drop here</p>
+                <p style="margin-bottom: 20px;">or</p>
+                <a class="btn btn-1">Select file</a>
+            </label>
+            <input type="file" id="file" accept="image/png, image/gif, image/jpeg" onchange="loadFile(event)">
+
+        </div>
     </main>
-    
+
     <footer>
         &copy; 2024 HistoGuerrier
     </footer>
 
+    <script>
+
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            var fileInput = document.getElementById('file');
+            var fileInfoContainer = document.getElementById('file-info');
+            var fileNameElement = document.getElementById('file-name');
+            var fileSizeElement = document.getElementById('file-size');
+            var clearButton = document.getElementById('clearButton')
+            var fileContainer = document.getElementById('file-container')
+            clearButton.style.display = 'flex'
+            fileContainer.style.display = 'none'
+
+            if (fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                output.src = URL.createObjectURL(file);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src); // libérer la mémoire
+                }
+
+                // Afficher les informations du fichier
+                fileInfoContainer.style.display = 'block';
+                fileNameElement.textContent = 'File Name: ' + file.name;
+                fileSizeElement.textContent = 'File Size: ' + formatBytes(file.size);
+            } else {
+                // Cacher les informations du fichier
+                fileInfoContainer.style.display = 'none';
+            }
+        };
+
+        // Fonction pour formater la taille du fichier en octets
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        // Fonction pour enlever l'image
+        function removeImage() {
+            var output = document.getElementById('output');
+            var fileInput = document.getElementById('file');
+            var fileInfoContainer = document.getElementById('file-info');
+            var clearButton = document.getElementById('clearButton')
+            var fileContainer = document.getElementById('file-container')
+            clearButton.style.display = 'none'
+            fileContainer.style.display = 'flex'
+
+
+            // Réinitialiser l'élément d'entrée de fichier
+            fileInput.value = '';
+
+            // Cacher l'image et les informations du fichier
+            output.src = '';
+            fileInfoContainer.style.display = 'none';
+        }
+    </script>
+
 </body>
+
 </html>
