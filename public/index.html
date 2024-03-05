@@ -186,6 +186,37 @@
             margin: 15px;
 
         }
+
+
+        .loader {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            border-radius: 50%;
+            position: absolute;
+            inset: 0;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+        }
+
+        .loader:after {
+            box-shadow: 0 2px 0 #FF3D00 inset;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
     </style>
 </head>
 
@@ -218,6 +249,8 @@
             <p id="file-name"></p>
             <p id="file-size"></p>
         </div>
+        <span id="loader" style="display: none;" class="loader"></span>
+
         <div id="file-container" class="file-container">
 
 
@@ -247,8 +280,11 @@
             var fileSizeElement = document.getElementById('file-size');
             var clearButton = document.getElementById('clearButton')
             var fileContainer = document.getElementById('file-container')
+            var loader = document.getElementById('loader')
+            loader.style.display = "flex"
             clearButton.style.display = 'flex'
             fileContainer.style.display = 'none'
+
 
             if (fileInput.files.length > 0) {
                 var file = fileInput.files[0];
@@ -287,6 +323,8 @@
             var fileInfoContainer = document.getElementById('file-info');
             var clearButton = document.getElementById('clearButton')
             var fileContainer = document.getElementById('file-container')
+            var loader = document.getElementById('loader')
+            loader.style.display = "none"
             clearButton.style.display = 'none'
             fileContainer.style.display = 'flex'
 
