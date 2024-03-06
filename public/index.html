@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>HistoGuerrier</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +40,7 @@
             position: absolute;
             top: 0;
             font-family: "Almendra", serif;
-
+            border-bottom: 2px rgba(255, 255, 255, 0.095) solid;
 
 
         }
@@ -150,7 +152,7 @@
 
         .btn-1 {
 
-            background-image: linear-gradient(to left, #f6d365, #fd8585, #f6d365);
+            background-image: linear-gradient(to left, #f6d365, #BE3131, #f6d365);
         }
 
         hr {
@@ -159,7 +161,6 @@
 
         .div {
             width: 33%;
-
             height: 180px;
         }
 
@@ -168,6 +169,7 @@
             align-items: center;
             justify-content: flex-end;
             padding-right: 40px;
+
         }
 
         #output {
@@ -183,6 +185,7 @@
 
         .iconSize {
             width: 30px;
+            height: 30px;
             margin: 15px;
 
         }
@@ -208,6 +211,22 @@
             animation: rotate 2s linear infinite;
         }
 
+        .sidebar {
+    position: fixed;
+    top: 0;
+    right: -340px; /* Initialisé à l'extérieur de l'écran */
+    width: 300px;
+    height: 100%;
+    background-color: #1a1a1a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s;
+    border-left: 2px solid;
+border-image: radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192)) 1;
+
+}
+
+
         @keyframes rotate {
             0% {
                 transform: rotate(0)
@@ -217,6 +236,131 @@
                 transform: rotate(360deg)
             }
         }
+        @keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fadeOut {
+    animation: fadeOut 1s ease-in-out 3s forwards;
+}
+
+
+        #menuButton2 {
+    display: none;
+}
+
+.buttonMenu{
+    padding: 30px;
+    
+    background-image: linear-gradient(to left, #f6a665, #BE3131);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.buttonMenu:hover{
+    
+    border-radius: 10px;
+    transform: scale(1.3);
+}
+
+.buttonMenu2{
+    
+    border-radius: 10px;
+   
+}
+
+.buttonMenu2:hover{
+    
+    border-radius: 0px;
+   
+}
+.menuIcon{
+    color: white;
+    cursor: pointer;
+}
+
+.recommendedContainer img{
+    width: 30px;
+    height: 30px;
+
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.recommendedContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Trebuchet MS';
+    height: 80px;
+    margin-bottom: 100px;
+}
+
+
+
+.recommendedContainer h2{
+    color: white;
+    cursor: pointer;
+    display: flex;
+
+}
+
+a{
+    text-decoration: none;
+    color: white
+   ;
+}
+.recommendedContainer h2:hover{
+    text-decoration: underline;
+}
+.recommendationTitleImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.recommendedContainer hr{
+    height: 100%;
+    
+margin-top: -50px;
+}
+
+#text-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 18px;
+            color: white;
+        }
+
+        #text-container h2 {
+    margin: 0;
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    animation: typing 2s steps(30, end) 2s ;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
 
@@ -227,21 +371,33 @@
 
         <div class="div content">
 
-            <hr width="500px" color="white" />
+            <hr width="100%" color="white" />
             <h1>HistoGuerrier</h1>
-            <div class="flex">
-                <img class="iconSize" src="images/greek-pillars.png" alt="">
-                <h3>Identifiez et Découvrez les Guerriers du Monde Ancien </h3>
-                <img class="iconSize" src="images/wreath.png" alt="">
-            </div>
+           
 
 
         </div>
         <div class="div menuDiv">
-            <i class="gg-menu"></i>
+            <div id="menuButton" class="buttonMenu"><i  class="gg-menu menuIcon"></i></div>
+            
+            
+        </div>
         </div>
     </header>
     <main>
+
+        <div id="recommendedContainer" class="recommendedContainer">
+            <hr color="#8A8B8B" />
+            <img src="images/question.png" alt="questionIcon">
+            <div class="recommendedTextGroup">
+                <p style="margin-bottom: -1px;">Recherchez sur internet : </p>
+                <div class="recommendationTitleImage"><div id="text-container">
+                    <h2 onclick="redirectToGoogle()" >Polish Winged Hussar artistic illustration</h2>
+                </div>
+                <img src="images/share.png" alt=""></div>
+                <p style="margin-top: -1px;">Puis insérez votre image !</p>
+            </div>
+        </div>
 
         <i id="clearButton" style="display: none; cursor: pointer;" onclick="removeImage()" class="gg-close-r"></i>
         <img id="output" />
@@ -264,7 +420,16 @@
             <input type="file" id="file" accept="image/png, image/gif, image/jpeg" onchange="loadFile(event)">
 
         </div>
+
+        
     </main>
+    <div id="sidebar" class="sidebar">
+        <div id="menuButton2" class="buttonMenu buttonMenu2">
+            <i   class="gg-menu menuIcon"></i>
+        </div>
+        
+    </div>
+    
 
     <footer>
         &copy; 2024 HistoGuerrier
@@ -280,10 +445,12 @@
             var fileSizeElement = document.getElementById('file-size');
             var clearButton = document.getElementById('clearButton')
             var fileContainer = document.getElementById('file-container')
+            var recommendedContainer = document.getElementById('recommendedContainer')
             var loader = document.getElementById('loader')
             loader.style.display = "flex"
             clearButton.style.display = 'flex'
             fileContainer.style.display = 'none'
+            recommendedContainer.style.display = 'none'
 
 
             if (fileInput.files.length > 0) {
@@ -300,6 +467,7 @@
             } else {
                 // Cacher les informations du fichier
                 fileInfoContainer.style.display = 'none';
+                
             }
         };
 
@@ -323,10 +491,12 @@
             var fileInfoContainer = document.getElementById('file-info');
             var clearButton = document.getElementById('clearButton')
             var fileContainer = document.getElementById('file-container')
+            
             var loader = document.getElementById('loader')
             loader.style.display = "none"
             clearButton.style.display = 'none'
             fileContainer.style.display = 'flex'
+            recommendedContainer.style.display = 'flex'
 
 
             // Réinitialiser l'élément d'entrée de fichier
@@ -335,7 +505,68 @@
             // Cacher l'image et les informations du fichier
             output.src = '';
             fileInfoContainer.style.display = 'none';
+            
         }
+        document.addEventListener('DOMContentLoaded', function () {
+    var sidebar = document.getElementById('sidebar');
+    var menuButton = document.getElementById('menuButton');
+    var menuButton2 = document.getElementById('menuButton2');
+
+    menuButton.addEventListener('click', function () {
+        var sidebarStyle = getComputedStyle(sidebar);
+        var sidebarRight = sidebarStyle.right === '0px' ? '-340px' : '0px';
+        menuButton.style.display = 'none'
+        sidebar.style.right = sidebarRight;
+        menuButton2.style.display = 'flex'
+    });
+
+    menuButton2.addEventListener('click', function () {
+    var sidebarStyle = getComputedStyle(sidebar);
+    var sidebarRight = sidebarStyle.right === '0px' ? '-340px' : '0px';
+    menuButton.style.display = 'flex'; // Afficher à nouveau le premier bouton
+    menuButton2.style.display = 'none'; // Masquer le deuxième bouton lors de la fermeture
+    sidebar.style.right = sidebarRight;
+});
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+            // Tableau des textes à afficher
+            var texts = [
+                "Moorish warrior artistic illustration",
+                "Zulu soldier traditional visual art",
+                "Mongol archer traditional art",
+                "Roman Legionnaire artistic illustration",
+                "Genoese crossbowman historical illustration",
+                "Polish Winged Hussar artistic illustration"
+            ];
+
+            var textIndex = 0;
+            var textElement = document.getElementById('text-container').getElementsByTagName('h2')[0];
+
+            function changeText() {
+                textElement.innerHTML = `« ${texts[textIndex]} »`;
+                
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            // Appeler la fonction de changement de texte toutes les 5 secondes
+            setInterval(changeText, 5000);
+        });
+
+        function redirectToGoogle() {
+            // Récupérer le texte actuel du h2
+            var currentText = document.getElementById('text-container').getElementsByTagName('h2')[0].innerText;
+
+            // Encodage de l'URL avec le texte actuel
+            var encodedText = encodeURIComponent(currentText);
+
+            // Redirection vers la recherche Google avec le texte actuel
+            window.open(`https://www.google.com/search?q=${encodedText}&tbm=isch`, '_blank');
+        }
+
+
     </script>
 
 </body>
