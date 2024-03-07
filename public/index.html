@@ -14,6 +14,9 @@
         rel="stylesheet">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-r.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/software-download.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/color-bucket.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/repeat.css' rel='stylesheet'>
     <style>
         * {
             transition: 0.3s;
@@ -155,8 +158,9 @@
             background-image: linear-gradient(to left, #f6d365, #BE3131, #f6d365);
         }
 
-        hr {
+        header hr {
             margin-bottom: -50px;
+            color: white;
         }
 
         .div {
@@ -217,12 +221,14 @@
     right: -340px; /* Initialisé à l'extérieur de l'écran */
     width: 300px;
     height: 100%;
-    background-color: #1a1a1a;
+    background-color: #1a1a1a76;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transition: right 0.3s;
     border-left: 2px solid;
 border-image: radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192)) 1;
+
+backdrop-filter: blur(10px);
 
 }
 
@@ -330,8 +336,7 @@ a{
 
 .recommendedContainer hr{
     height: 100%;
-    
-margin-top: -50px;
+
 }
 
 #text-container {
@@ -351,6 +356,14 @@ margin-top: -50px;
     animation: typing 2s steps(30, end) 2s ;
 }
 
+.sidebarContent{
+    
+    height: 100%;
+    padding: 30px;
+    color: white;
+    font-size: 20px;
+}
+
 @keyframes typing {
     from {
         width: 0;
@@ -361,18 +374,88 @@ margin-top: -50px;
     }
 }
 
+.sidebarContent {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .tabThemeDiv {
+            display: flex;
+            align-items: center;
+            margin-left: -80px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .themeLink{
+            padding: 24px 100px 24px 30px;
+            display: flex;
+            flex-direction: column;
+            float: left;
+            width: 60%;
+        }
+
+        .themeLink:hover{
+            background-color: #444444;
+        }
+
+        .tabTheme{
+            display: flex;
+            flex-direction: column;
+        }
+
+        
+
+        .tab:hover {
+            background-color: #333;
+        }
+
+        .tab i {
+            margin-right: 40px;
+
+        }
+
+        .tabContent {
+            display: none;
+            padding: 10px;
+        }
+
+        .tabContent.active {
+            display: block;
+        }
+
+        .tab1 {
+            font-family: 'Trebuchet MS';
+            background-image: linear-gradient(to left, #f6a665, #BE3131);
+            color: black;
+            transition: background-color 0.3s;
+        }
+
+        .tab1:hover {
+            background-image: linear-gradient(to left, #ff9d4d, #f85050);
+        }
     </style>
 </head>
 
-<body>
+<body id="body">
 
-    <header>
-        <div class="div logoDiv"><img src="images/logo.svg" alt="Logo"></div>
+    <header id="header">
+        <div  class="div logoDiv"><img id="logo" onclick="tabHomeFunction()" src="images/logo.svg" alt="Logo"></div>
 
         <div class="div content">
 
-            <hr width="100%" color="white" />
-            <h1>HistoGuerrier</h1>
+            <hr id="titleHr" width="100%" />
+            <h1 id="histoTitle">HistoGuerrier</h1>
            
 
 
@@ -385,17 +468,16 @@ margin-top: -50px;
         </div>
     </header>
     <main>
-
-        <div id="recommendedContainer" class="recommendedContainer">
+        <div id="tabHome"><div id="recommendedContainer" class="recommendedContainer">
             <hr color="#8A8B8B" />
             <img src="images/question.png" alt="questionIcon">
             <div class="recommendedTextGroup">
-                <p style="margin-bottom: -1px;">Recherchez sur internet : </p>
+                <p id="pRecommanded" style="margin-bottom: -1px;">Recherchez sur internet : </p>
                 <div class="recommendationTitleImage"><div id="text-container">
-                    <h2 onclick="redirectToGoogle()" >Polish Winged Hussar artistic illustration</h2>
+                    <h2 id="titleRecommanded" onclick="redirectToGoogle()" >Polish Winged Hussar artistic illustration</h2>
                 </div>
-                <img src="images/share.png" alt=""></div>
-                <p style="margin-top: -1px;">Puis insérez votre image !</p>
+                </div>
+                <p id="pRecommanded2" style="margin-top: -1px;">Puis insérez votre image !</p>
             </div>
         </div>
 
@@ -411,27 +493,71 @@ margin-top: -50px;
 
 
 
-            <label for="file" class="file-style btn-gradient-border btn-glow">
-                <img src="images/upload.svg" width="50">
+            <label id="fileInput" for="file" class="file-style btn-gradient-border btn-glow">
+                <img id="fileInputIcon" src="images/upload.svg" width="50">
                 <p>Drag and Drop here</p>
                 <p style="margin-bottom: 20px;">or</p>
                 <a class="btn btn-1">Select file</a>
             </label>
             <input type="file" id="file" accept="image/png, image/gif, image/jpeg" onchange="loadFile(event)">
 
+        </div></div>
+
+
+        <div  style="display: none;" id="tabMyPrompt">
+            <h1>my prompt</h1>
         </div>
+
+        <div style="display: none;" id="tabRandomPrompt">
+            <h1>Random</h1>
+        </div>
+
+       
+        
 
         
     </main>
     <div id="sidebar" class="sidebar">
         <div id="menuButton2" class="buttonMenu buttonMenu2">
-            <i   class="gg-menu menuIcon"></i>
+            <i id="menuIcon"  class="gg-menu menuIcon"></i>
+  
+        </div>
+        <div class="sidebarContent">
+            <div onclick="tabMyPromptFunction()" class="tab tab1">
+                <i class="gg-software-download"></i>
+                Mes prompt
+            </div>
+    
+            <div style=" padding-top: 10px;" onclick="openMenu()" class="tab tabTheme" >
+               <div class="tabThemeDiv">
+<i class="gg-color-bucket"></i>
+                Thème 
+               </div>
+                
+            
+
+               
+                <div onclick="changeLightColorTheme()" id="themeDiv1" style="margin-top: 30px; display: none;" class="themeLink">                  
+                 Clair
+                </div>
+                <div onclick="changeDarkColorTheme()" id="themeDiv2" style="display: none; margin-bottom: -30px;" class="themeLink">
+                    Sombre
+                   </div>
+                </div>
+                 <div onclick="tabRandomPromptFunction()" class="tab" onclick="openTab('tab3')">
+                <i class="gg-repeat"></i>
+                Aléatoire
+            </div>
+            </div>
+    
+           
+          
         </div>
         
     </div>
     
 
-    <footer>
+    <footer id="footer">
         &copy; 2024 HistoGuerrier
     </footer>
 
@@ -565,6 +691,126 @@ document.addEventListener('DOMContentLoaded', function () {
             // Redirection vers la recherche Google avec le texte actuel
             window.open(`https://www.google.com/search?q=${encodedText}&tbm=isch`, '_blank');
         }
+
+
+function tabHomeFunction() {      
+    var tabHome = document.getElementById('tabHome');
+    var tabRandomPrompt = document.getElementById('tabRandomPrompt');
+    var tabMyPrompt = document.getElementById('tabMyPrompt');
+
+    tabHome.style.display = "block";
+    tabRandomPrompt.style.display = "none";
+    tabMyPrompt.style.display = "none";
+}
+
+function tabRandomPromptFunction() {      
+    var tabRandomPrompt = document.getElementById('tabRandomPrompt');
+    var tabHome = document.getElementById('tabHome');
+    var tabMyPrompt = document.getElementById('tabMyPrompt');
+
+    tabRandomPrompt.style.display = "flex";
+    tabHome.style.display = "none";
+    tabMyPrompt.style.display = "none";
+}
+
+function tabMyPromptFunction() {      
+    var tabMyPrompt = document.getElementById('tabMyPrompt');
+    var tabHome = document.getElementById('tabHome');
+    var tabRandomPrompt = document.getElementById('tabRandomPrompt');
+
+    tabMyPrompt.style.display = "flex";
+    tabHome.style.display = "none";
+    tabRandomPrompt.style.display = "none";
+}
+
+function changeLightColorTheme(){
+    var body = document.getElementById('body')
+    body.style.backgroundColor = "white"
+
+    var histoTitle = document.getElementById('histoTitle')
+    histoTitle.style.color = "black"
+    histoTitle.style.backgroundColor = "white"
+
+    var titleHr = document.getElementById('titleHr')
+    titleHr.style.color = "black"
+    var menuIcon = document.getElementById('menuIcon')
+    menuIcon.style.color="black"
+
+    var header = document.getElementById('header');
+header.style.borderBottom = '2px solid #F5F5F5';
+
+var titleRecommanded = document.getElementById('titleRecommanded')
+titleRecommanded.style.color="black"
+
+var pRecommanded = document.getElementById('pRecommanded')
+pRecommanded.style.color = "#D4D4D4"
+var pRecommanded2 = document.getElementById('pRecommanded2')
+pRecommanded2.style.color = "#D4D4D4"
+
+var logo = document.getElementById('logo');
+logo.src = 'images/logo2.svg';
+
+var fileInput = document.getElementById('fileInput')
+fileInput.style.color = "#776F6B"
+
+var fileInputIcon = document.getElementById('fileInputIcon')
+fileInputIcon.src = 'images/upload2.svg'
+
+var footer = document.getElementById('footer')
+footer.style.color = "black"
+
+}
+
+function changeDarkColorTheme(){
+    var body = document.getElementById('body')
+    body.style.backgroundColor = "#060809"
+
+    var histoTitle = document.getElementById('histoTitle')
+    histoTitle.style.color = "white"
+    histoTitle.style.backgroundColor = "#060809"
+
+    var titleHr = document.getElementById('titleHr')
+    titleHr.style.color = "white"
+    var menuIcon = document.getElementById('menuIcon')
+    menuIcon.style.color="white"
+
+    var header = document.getElementById('header');
+header.style.borderBottom = '2px solid rgba(255, 255, 255, 0.095)';
+
+var titleRecommanded = document.getElementById('titleRecommanded')
+titleRecommanded.style.color="white"
+
+var pRecommanded = document.getElementById('pRecommanded')
+pRecommanded.style.color = "#D4D4D4"
+var pRecommanded2 = document.getElementById('pRecommanded2')
+pRecommanded2.style.color = "#D4D4D4"
+
+var logo = document.getElementById('logo');
+logo.src = 'images/logo2.svg';
+
+var fileInput = document.getElementById('fileInput')
+fileInput.style.color = "#776F6B"
+
+var fileInputIcon = document.getElementById('fileInputIcon')
+fileInputIcon.src = 'images/upload.svg'
+
+var footer = document.getElementById('footer')
+footer.style.color = "white"
+
+}
+
+function openMenu(){
+    var themeDiv1 = document.getElementById('themeDiv1')
+themeDiv1.style.display="block"
+
+
+var themeDiv2 = document.getElementById('themeDiv2')
+themeDiv2.style.display="block"
+
+}
+
+
+
 
 
     </script>
