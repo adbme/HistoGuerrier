@@ -17,6 +17,7 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/software-download.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/color-bucket.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/repeat.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
     <style>
         * {
             transition: 0.3s;
@@ -388,6 +389,12 @@ a{
             margin-top: 20px;
         }
 
+        .infosTheme {
+    position: absolute;
+    bottom: 30px;
+    width: 180px }
+
+
         .tabThemeDiv {
             display: flex;
             align-items: center;
@@ -418,6 +425,7 @@ a{
 
         .tab:hover {
             background-color: #333;
+            
         }
 
         .tab i {
@@ -512,6 +520,10 @@ a{
             <h1>Random</h1>
         </div>
 
+        <div style="display: none;" id="tabInfos">
+            <h1>Infos</h1>
+        </div>
+
        
         
 
@@ -529,8 +541,8 @@ a{
             </div>
     
             <div style=" padding-top: 10px;" onclick="openMenu()" class="tab tabTheme" >
-               <div class="tabThemeDiv">
-<i class="gg-color-bucket"></i>
+               <div id="themeTitle" class="tabThemeDiv">
+                <i class="gg-color-bucket"></i>
                 Thème 
                </div>
                 
@@ -544,10 +556,16 @@ a{
                     Sombre
                    </div>
                 </div>
-                 <div onclick="tabRandomPromptFunction()" class="tab" onclick="openTab('tab3')">
+                 <div id="randomTheme" onclick="tabRandomPromptFunction()" class="tab">
                 <i class="gg-repeat"></i>
                 Aléatoire
             </div>
+
+            <div id="infosTheme" onclick="tabInfosFunction()" class="tab infosTheme" >
+                <i class="gg-info"></i>
+                Infos
+            </div>
+
             </div>
     
            
@@ -699,6 +717,7 @@ function tabHomeFunction() {
     var tabMyPrompt = document.getElementById('tabMyPrompt');
 
     tabHome.style.display = "block";
+    tabInfos.style.display = "none"
     tabRandomPrompt.style.display = "none";
     tabMyPrompt.style.display = "none";
 }
@@ -707,21 +726,38 @@ function tabRandomPromptFunction() {
     var tabRandomPrompt = document.getElementById('tabRandomPrompt');
     var tabHome = document.getElementById('tabHome');
     var tabMyPrompt = document.getElementById('tabMyPrompt');
+    var tabInfos = document.getElementById('tabInfos');
 
     tabRandomPrompt.style.display = "flex";
     tabHome.style.display = "none";
+    tabInfos.style.display = "none"
     tabMyPrompt.style.display = "none";
 }
 
 function tabMyPromptFunction() {      
     var tabMyPrompt = document.getElementById('tabMyPrompt');
     var tabHome = document.getElementById('tabHome');
+    var tabInfos = document.getElementById('tabInfos');
     var tabRandomPrompt = document.getElementById('tabRandomPrompt');
 
     tabMyPrompt.style.display = "flex";
     tabHome.style.display = "none";
+    tabInfos.style.display = "none"
     tabRandomPrompt.style.display = "none";
 }
+
+function tabInfosFunction() {      
+    var tabHome = document.getElementById('tabHome');
+    var tabInfos = document.getElementById('tabInfos');
+    var tabRandomPrompt = document.getElementById('tabRandomPrompt');
+    var tabMyPrompt = document.getElementById('tabMyPrompt');
+
+    tabHome.style.display = "none";
+    tabInfos.style.display = "block"
+    tabRandomPrompt.style.display = "none";
+    tabMyPrompt.style.display = "none";
+}
+
 
 function changeLightColorTheme(){
     var body = document.getElementById('body')
@@ -733,8 +769,6 @@ function changeLightColorTheme(){
 
     var titleHr = document.getElementById('titleHr')
     titleHr.style.color = "black"
-    var menuIcon = document.getElementById('menuIcon')
-    menuIcon.style.color="black"
 
     var header = document.getElementById('header');
 header.style.borderBottom = '2px solid #F5F5F5';
@@ -759,7 +793,22 @@ fileInputIcon.src = 'images/upload2.svg'
 var footer = document.getElementById('footer')
 footer.style.color = "black"
 
+var sidebar = document.getElementById('sidebar')
+sidebar.style.backgroundColor="#ffffff76"
+sidebar.style.color="black"
+
+var themeDiv1 = document.getElementById('themeDiv1')
+themeDiv1.style.color="black"
+var themeDiv2 = document.getElementById('themeDiv2')
+themeDiv2.style.color="black"
+
+var themeTitle = document.getElementById('themeTitle')
+themeTitle.style.color="black"
+
+var randomTheme = document.getElementById('randomTheme')
+randomTheme.style.color="black"
 }
+
 
 function changeDarkColorTheme(){
     var body = document.getElementById('body')
@@ -781,15 +830,15 @@ var titleRecommanded = document.getElementById('titleRecommanded')
 titleRecommanded.style.color="white"
 
 var pRecommanded = document.getElementById('pRecommanded')
-pRecommanded.style.color = "#D4D4D4"
+pRecommanded.style.color = "rgba(255, 255, 255, 0.531)"
 var pRecommanded2 = document.getElementById('pRecommanded2')
-pRecommanded2.style.color = "#D4D4D4"
+pRecommanded2.style.color = "rgba(255, 255, 255, 0.531)"
 
 var logo = document.getElementById('logo');
-logo.src = 'images/logo2.svg';
+logo.src = 'images/logo.svg';
 
 var fileInput = document.getElementById('fileInput')
-fileInput.style.color = "#776F6B"
+fileInput.style.color = "rgba(255, 255, 255, 0.531)"
 
 var fileInputIcon = document.getElementById('fileInputIcon')
 fileInputIcon.src = 'images/upload.svg'
@@ -797,6 +846,20 @@ fileInputIcon.src = 'images/upload.svg'
 var footer = document.getElementById('footer')
 footer.style.color = "white"
 
+var sidebar = document.getElementById('sidebar')
+sidebar.style.backgroundColor="#1a1a1a76"
+sidebar.style.color="white"
+
+var themeDiv1 = document.getElementById('themeDiv1')
+themeDiv1.style.color="white"
+var themeDiv2 = document.getElementById('themeDiv2')
+themeDiv2.style.color="white"
+
+var themeTitle = document.getElementById('themeTitle')
+themeTitle.style.color="white"
+
+var randomTheme = document.getElementById('randomTheme')
+randomTheme.style.color="white"
 }
 
 function openMenu(){
